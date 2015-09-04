@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Car" representedClassName="Car" parentEntity="ParentObject" syncable="YES">
+        <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="car" inverseEntity="Student" syncable="YES"/>
+    </entity>
+    <entity name="ParentObject" isAbstract="YES" syncable="YES"/>
+    <entity name="Student" representedClassName="Student" parentEntity="ParentObject" syncable="YES">
+        <attribute name="dateOfBirth" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="car" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Car" inverseName="student" inverseEntity="Car" syncable="YES"/>
+        <relationship name="university" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="University" inverseName="students" inverseEntity="University" syncable="YES"/>
+    </entity>
+    <entity name="University" representedClassName="University" parentEntity="ParentObject" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Student" inverseName="university" inverseEntity="Student" syncable="YES"/>
+    </entity>
+    <fetchRequest name="testFetchRequest" entity="Student" predicateString="score &gt; 3 AND firstName BEGINSWITH &quot;S&quot;"/>
+    <elements>
+        <element name="Car" positionX="-2079" positionY="-12240" width="128" height="73"/>
+        <element name="ParentObject" positionX="-2259" positionY="-12418" width="128" height="45"/>
+        <element name="Student" positionX="-2279" positionY="-12283" width="128" height="133"/>
+        <element name="University" positionX="-2468" positionY="-12223" width="128" height="73"/>
+    </elements>
+</model>
